@@ -9,9 +9,15 @@ import { serialize } from "next-mdx-remote/serialize";
 
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import AppMDXViewer from "@/components/main/AppMDXViewer";
+// import AppMDXViewer from "@/components/main/AppMDXViewer";
 import { Badge } from "@/components/ui/badge";
 import { AppNewMark } from "@/components/main/AppNewMark";
+import dynamic from "next/dynamic";
+
+const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
+  loading: () => <p>Loading...</p>,
+  ssr: false
+})
 
 async function Post(props: any) {
   const { data, content} = (await getStaticProps(props));
