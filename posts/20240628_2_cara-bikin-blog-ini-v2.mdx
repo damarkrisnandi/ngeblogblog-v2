@@ -1,0 +1,45 @@
+---
+title: 'Cara Bikin Blog ini V2'
+description: 'Gimana caranya bang?'
+date: 'Fri Jun 28 2024 15:17:54 GMT+0700 (Indochina Time)'
+tags: ['next', 'mdx', 'tailwind', 'shadcnui']
+---
+
+Dulu sempet dikasih tau caranya **sebagian** di post [**Cara bikin blog ini?**](/post/20220722_1_gimana-caranya-ini) cuma kelewat 2 tahun malah gak dilanjut hehehe.
+
+## Outline
+
+Mari kita bagi pembahasannya menjadi beberapa bagian. 
+1. Setup **ShadCNUI** (yang otomatis juga **tailwindcss** akan tersetup) 
+2. Setup **MDX Remote** dan ``gray-matter`` sebagai parser dan reader file **MDX**
+3. (opsional) Setup ``rehype-katex`` dan ``remark-math`` untuk menampilkan persamaan matematika.
+4. Development
+
+Sebagai *disclaimer*, cara ini diadopsi dari https://github.com/markshenouda/Next.js-Tailwind-MDX-Blog, sehingga step-stepnya akan ada kesamaan namun cukup banyak tambahan yang ada di blog ini sendiri. Juga pastikan bahwa anda menggunakan **NextJS 14** dengan **NodeJS 18**, sehingga anda dapat mengikuti step-stepnya dengan baik.
+Mari dimulai step-stepnya..
+
+## Membuat NextJS-MDX Blog
+### 1. Setup ShadCNUI
+Untuk setup ShadCN sendiri sudah ada di web resmi ShadCN, yaitu di https://ui.shadcn.com/docs. Jika dirangkum secara singkat, maka menjadi sebagai berikut
+1. Create Project
+```npm
+npx create-next-app@latest my-app --typescript --tailwind --eslint
+```
+2. Run The CLI
+```npm
+npx shadcn-ui@latest init
+```
+3. Configure component.json
+```npm
+Which style would you like to use? › Default
+Which color would you like to use as base color? › Slate
+Do you want to use CSS variables for colors? › no / yes
+```
+
+Selengkapnya di https://ui.shadcn.com/docs/installation/next. dengan **ShadCN** ini maka pengerjaan *component* akan lebih rapi dan lebih cepat.
+
+### 2. Setup **MDX Remote** dan `gray-matter` sebagai parser dan reader file **MDX**
+Dibutuhkan beberapa *library* pendukung untuk dapat menampilkan file **MDX** selayaknya seperti sebuah postingan blog / artikel. *library* yang diperlukan yaitu ``next-mdx-remote``, ``gray-matter`` dan ``@tailwindcss/typography``. sehingga instalasinya akan menjadi seperti berikut ini
+```npm
+npm install next-mdx-remote gray-matter @tailwindcss/typography
+```

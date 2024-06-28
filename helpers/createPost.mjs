@@ -37,8 +37,8 @@ description: 'Description of new post'
 date: '${date}'
 tags: []
 ---
-<!-- customize your filename, title, desc, and all of this file properties -->
-<!-- fill your content here -->
+{/* customize your filename, title, desc, and all of this file properties */}
+{/* fill your content here */}
 `;
 
 fs.writeFileSync(`./posts/${y}${m}${d}_${postNum}_${filename}.mdx`, data);
