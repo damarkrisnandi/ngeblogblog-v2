@@ -19,7 +19,7 @@ export default function AppPagination(props: any) {
         <PreviousButton {...props}/>
         <CurrentMinus1Button {...props}/>
         <PaginationItem>
-          <PaginationLink href={props.params.page}>{props.params.page}</PaginationLink>
+          <b>{props.params.page}</b>
         </PaginationItem>
         <CurrentPlus1Button {...props}/>
         <NextButton {...props}/>

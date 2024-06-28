@@ -51,7 +51,8 @@ export default function Home(props: any) {
     <main className="flex min-h-screen flex-col items-center justify-between">
 
       
-      <h1 className="mt-24 mb-12 font-bold text-3xl md:text-7xl z-50">Oret-oretan doang</h1>
+      <h1 className="mt-24 mb-6 font-bold text-3xl md:text-7xl z-50">Oret-oretan doang</h1>
+      <p className="italic mb-6">Page {page}/{pages}</p>
       {posts.map((post: any) => (
         <AppHighlightContent className="w-11/12"
           key={post.slug}
