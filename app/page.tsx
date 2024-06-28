@@ -1,4 +1,4 @@
-// import Head from 'next/head'
+import Head from 'next/head'
 import getPosts from '../helpers/getPosts';
 
 import { AppHighlightContent } from '../components/main/AppHighlightContent'
@@ -39,11 +39,11 @@ export default function Home(props: any) {
 } = getStaticProps(props)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      {/* <Head>
+      <Head>
         <title>ngeblog</title>
         <meta name="description" content="Mari ngeblog, blog" />
         <link rel="icon" href="/pixel_me_cropped.png" />
-      </Head> */}
+      </Head>
 
       
       <h1 className="mt-24 mb-12 font-bold text-3xl md:text-7xl z-50">Lastest Post</h1>
