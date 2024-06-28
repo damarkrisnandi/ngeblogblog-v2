@@ -30,6 +30,14 @@ const getStaticProps = ({params}: any) => {
 //     };
 //   };
 
+export const generateStaticParams = async () => {
+  const pageSize = 5;
+    const posts = await getPosts();
+    const allPages = Array.from({length: Math.ceil(posts.length / 3)}, (_, i) => i + 1) || [];
+    const paths = allPages?.map((page) => ({ page: page.toString() }));
+    return paths;
+}
+
 export default function Home(props: any) {
   const {
     posts, page,
@@ -39,11 +47,6 @@ export default function Home(props: any) {
 } = getStaticProps(props)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      {/* <Head>
-        <title>ngeblog</title>
-        <meta name="description" content="Mari ngeblog, blog" />
-        <link rel="icon" href="/pixel_me_cropped.png" />
-      </Head> */}
 
       
       <h1 className="mt-24 mb-12 font-bold text-3xl md:text-7xl z-50">Lastest Post</h1>

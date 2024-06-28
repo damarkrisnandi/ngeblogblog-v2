@@ -56,14 +56,11 @@ async function Post(props: any) {
 
 export default Post;
 
-// export const getStaticPaths = async () => {
-//   const posts = getPosts();
-//   const paths = posts.map((post) => ({ params: { slug: post.slug } }));
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
+export const generateStaticParams = async () => {
+  const posts = getPosts();
+  const paths = posts.map((post) => ({ slug: post.slug  }));
+  return paths;
+};
 
 const getStaticProps = async ({ params }: any) => {
   const post = getPost(params.slug);
