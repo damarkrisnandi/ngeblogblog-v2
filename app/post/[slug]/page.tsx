@@ -33,7 +33,7 @@ async function Post(props: any) {
       </span>
       <div className="flex flex-col md:flex-row mb-6">
         <div className="prose !max-w-[32ch] md:!max-w-full mt-12">
-          <AppMDXViewer {...content}/>
+          {/* <AppMDXViewer {...content}/> */}
         </div>
         {/* <div className="basis-1/6 mt-20 md:mt-0 ml-2">
           <h1 className="text-md md:text-xl font-semibold">Postingan lainnya...</h1>
@@ -58,7 +58,7 @@ export default Post;
 
 export const generateStaticParams = async () => {
   const posts = getPosts();
-  const paths = posts.map((post) => ({ slug: post.slug  }));
+  const paths = posts.map((post: any) => ({ slug: post.slug  }));
   return paths;
 };
 
