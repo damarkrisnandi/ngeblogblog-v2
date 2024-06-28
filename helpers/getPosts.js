@@ -1,7 +1,7 @@
 // import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-const { readFileSync, readdirSync } = require('fs');
+import { readFileSync, readdirSync } from 'fs';
 // const { readFileSync, readdirSync } = (...args) => import('fs').then(({default: fetch}) => fetch(...args));
 // const fs = (...args) => import('fs').then(({default: fs}) => fs);
 
