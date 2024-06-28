@@ -1,7 +1,7 @@
 // import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { readFileSync, readdirSync } from "fs";
+const { readFileSync, readdirSync } = require('fs');
 // const fs = (...args) => import('fs').then(({default: fs}) => fs);
 
 const getPost = (slug) => {
