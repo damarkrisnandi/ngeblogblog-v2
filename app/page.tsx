@@ -49,12 +49,12 @@ export default function Home(props: any) {
       <h1 className="mt-24 mb-12 font-bold text-3xl md:text-7xl z-50">Lastest Post</h1>
       {posts.map((post: any) => (
         <AppHighlightContent className="w-11/12"
-          key={post.slug}
-          title={post.data.title}
-          tags={post.data.tags}
-          date={post.data.date}
-          description={post.data.description}
-          slug={post.slug}
+          key={post?.slug}
+          title={post?.data?.title}
+          tags={post?.data?.tags}
+          date={post?.data?.date}
+          description={post?.data?.description}
+          slug={post?.slug}
         />
       ))}
       {/* <PagesDirection page={page} pages={pages} /> */}
