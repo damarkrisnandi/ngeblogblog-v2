@@ -1,6 +1,6 @@
 ---
-title: 'Cara Bikin Blog ini V2'
-description: 'Gimana caranya bang?'
+title: '[Part 1] Cara Bikin Blog ini'
+description: 'Part 1: Setup Project untuk membuat blog kayak gini'
 date: 'Fri Jun 28 2024 22:38:54 GMT+0700 (Indochina Time)'
 tags: ['next', 'mdx', 'tailwind', 'shadcnui']
 ---
@@ -13,10 +13,12 @@ Mari kita bagi pembahasannya menjadi beberapa bagian.
 1. Setup **ShadCNUI** (yang otomatis juga **tailwindcss** akan tersetup) 
 2. Setup **MDX Remote** dan ``gray-matter`` sebagai parser dan reader file **MDX**
 3. (opsional) Setup ``rehype-katex`` dan ``remark-math`` untuk menampilkan persamaan matematika.
-4. Development
+4. Development (Part 2)
 
 Sebagai *disclaimer*, cara ini diadopsi dari https://github.com/markshenouda/Next.js-Tailwind-MDX-Blog, sehingga step-stepnya akan ada kesamaan namun cukup banyak tambahan yang ada di blog ini sendiri. Juga pastikan bahwa anda menggunakan **NextJS 14** dengan **NodeJS 18**, sehingga anda dapat mengikuti step-stepnya dengan baik.
 Mari dimulai step-stepnya..
+
+Di part 1 ini kita mulai dari setupnya dulu ya karena lumayan banyak variasinya saat *development* jadi kita cekidot
 
 ## Membuat NextJS-MDX Blog
 ### 1. Setup ShadCNUI
@@ -43,3 +45,46 @@ Dibutuhkan beberapa *library* pendukung untuk dapat menampilkan file **MDX** sel
 ```npm
 npm install next-mdx-remote gray-matter @tailwindcss/typography
 ```
+
+Kemudian pada file ``tailwind.config.ts`` pada bagian `plugin` ditambahkan
+```
+require("@tailwindcss/typography")
+```
+untuk memasang `@tailwindcss/typography` sebagai plugin pada tailwindcss system. 
+
+### 3. (Optional) Setup ``rehype-katex`` dan ``remark-math`` untuk menampilkan persamaan matematika.
+Penggunaan **TEX** sebagai *typesetting* yang cukup terkenal di kalangan Matematika dan Sains untuk membuat formula atau persamaan yang cukup simpel 
+(juga saya yang *Major* di matematika dan menggunakan **TEX** ), di **javascript** tentu ada juga library untuk bisa memproses *syntax* **TEX** yaitu ``rehype-katex`` dan ``remark-math``.
+Berikut ini adalah step-step untuk memasang ``rehype-katex`` dan ``remark-math``.
+1. Install
+
+```
+npm install rehype-katex remark-math
+```
+
+2. memasang ``rehype-katex`` dan ``remark-math`` sebagai plugin dari serialize ``next-mdx-remote``
+```typescript
+
+import { serialize } from "next-mdx-remote/serialize";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+    ...
+    const mdxSource = await serialize(post.content, {
+        // MDX's available options, see the MDX docs for more info.
+        // https://mdxjs.com/packages/mdx/#compilefile-options
+        mdxOptions: {
+            remarkPlugins: [remarkMath],
+            rehypePlugins: [rehypeKatex],
+            format: "mdx",
+        },
+    });
+```
+Mari kita coba dengan Persamaan gaya gravitasi dua planet.
+$$
+F = G \left( \frac{m_1 m_2}{r^2} \right)
+$$
+
+Ya, *it's works*.
+
+
+Jika sudah disetup sedemikian rupa, maka ``mdxSource`` ini yang akan menjadi content dari component ``MDXRemote``. Dan jika sudah mengikuti tiga step ini maka setupnya sudah selesai. To be continued ke Part 2 (coming soon).

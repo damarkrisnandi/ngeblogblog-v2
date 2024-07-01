@@ -75,4 +75,6 @@
     }
   }
 
-
+.katex-html {
+  display: none;
+}
