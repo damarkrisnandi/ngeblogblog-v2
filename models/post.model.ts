@@ -1,5 +1,5 @@
 export class PostModel {
-    data: PostHeader; 
+    data: PostHeaderModel; 
     content: any;
 }
 
