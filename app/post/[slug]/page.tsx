@@ -54,12 +54,19 @@ const getMdxData = async ({ params }: any) => {
 
 function Loading() {
   return (
-    <div className="flex items-center space-x-4 w-full">
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-[100%]" />
-        <Skeleton className="h-4 w-[100%]" />
-        <Skeleton className="h-4 w-[100%]" />
-        <Skeleton className="h-4 w-[80%]" />
+    <div className="flex flex-col items-center space-y-8 w-full">
+      <div className="space-y-3 w-full">
+        <Skeleton className="h-[1em] w-[85vw]" />
+        <Skeleton className="h-[1em] w-[85vw]" />
+        <Skeleton className="h-[1em] w-[85vw]" />
+        <Skeleton className="h-[1em] !w-[28ch] sm:!w-[52ch] md:!w-[60ch]" />
+      </div>
+
+      <div className="space-y-3 w-full">
+        <Skeleton className="h-[1em] w-[85vw]" />
+        <Skeleton className="h-[1em] w-[85vw]" />
+        <Skeleton className="h-[1em] w-[85vw]" />
+        <Skeleton className="h-[1em] !w-[28ch] sm:!w-[52ch] md:!w-[60ch]" />
       </div>
     </div>
   )
