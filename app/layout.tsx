@@ -9,6 +9,18 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "ngeblog blog v2",
   description: "Marilah ngeblog",
+  icons: {
+    icon: [
+      {
+        url: '/pixel_me_cropped.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/pixel_me_cropped.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

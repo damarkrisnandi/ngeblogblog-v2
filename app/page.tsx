@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import getPosts from '../helpers/getPosts';
 
-import { AppHighlightContent } from '../components/main/AppHighlightContent'
-// import PagesDirection from '../components/PagesDirection';
+import { AppHighlightContent } from '../components/main/AppHighlightContent';
 
 
 const getStaticProps = ({params}: any) => {
@@ -19,16 +18,6 @@ const getStaticProps = ({params}: any) => {
     };
 };
 
-// export const getStaticPaths = async () => {
-//     const pageSize = 5;
-//     const posts = await getPosts();
-//     const allPages = Array.from({length: Math.ceil(posts.length / 3)}, (_, i) => i + 1);
-//     const paths = allPages.map((page) => ({ params: { page: page.toString() } }));
-//     return {
-//       paths,
-//       fallback: false,
-//     };
-//   };
 
 export default function Home(props: any) {
   const {
@@ -42,7 +31,7 @@ export default function Home(props: any) {
       <Head>
         <title>ngeblog</title>
         <meta name="description" content="Mari ngeblog, blog" />
-        <link rel="icon" href="/pixel_me_cropped.png" />
+        <link rel="shortcut icon" href="/pixel_me_cropped.png" />
       </Head>
 
       

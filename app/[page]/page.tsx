@@ -1,56 +1,39 @@
-// import Head from 'next/head'
 import getPosts from '../../helpers/getPosts';
 
 import { AppHighlightContent } from '../../components/main/AppHighlightContent'
 import AppPagination from '@/components/main/AppPagination';
-// import PagesDirection from '../components/PagesDirection';
+import { PaginationData } from "@/constants/pagination"
 
 
-const getStaticProps = ({params}: any) => {
-    const pageSize = 5;
-    const posts = getPosts()
-    const { page } = params;
-    const slicedPosts = posts.slice(pageSize * (parseInt(page) - 1), (pageSize * parseInt(page)));
-    return {
-        posts: slicedPosts,
-        page,
-        pageSize,
-        pages: Math.ceil(posts.length / pageSize) 
-        
-    };
+const getAllPostAndPaging = ({params}: any) => {
+  const pageSize = PaginationData.pageSize;
+  const posts = getPosts()
+  const { page } = params;
+  const slicedPosts = posts.slice(pageSize * (parseInt(page) - 1), (pageSize * parseInt(page)));
+  return {
+    posts: slicedPosts,
+    page,
+    pageSize,
+    pages: PaginationData.getTotalPage(posts.length)
+  };
 };
 
-// export const getStaticPaths = async () => {
-//     const pageSize = 5;
-//     const posts = await getPosts();
-//     const allPages = Array.from({length: Math.ceil(posts.length / 3)}, (_, i) => i + 1);
-//     const paths = allPages.map((page) => ({ params: { page: page.toString() } }));
-//     return {
-//       paths,
-//       fallback: false,
-//     };
-//   };
-
 export const generateStaticParams = async () => {
-  const pageSize = 5;
-    const posts = await getPosts();
-    const allPages = Array.from({length: Math.ceil(posts.length / 3)}, (_, i) => i + 1) || [];
-    const paths = allPages?.map((page) => ({ page: page.toString() }));
-    return paths;
+  const pageSize = PaginationData.pageSize;
+  const posts = await getPosts();
+  const allPages = Array.from({length: PaginationData.getTotalPage(posts.length)}, (_, i) => i + 1) || [];
+  const paths = allPages?.map((page) => ({ page: page.toString() }));
+  return paths;
 }
 
 export default function Home(props: any) {
-  console.log(props)
   const {
     posts, page,
     pageSize,
-    pages 
-    
-} = getStaticProps(props)
+    pages
+  } = getAllPostAndPaging(props)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-
-      
       <h1 className="mt-24 mb-6 font-bold text-3xl md:text-7xl z-50">Oret-oretan doang</h1>
       <p className="italic mb-6">Page {page}/{pages}</p>
       {posts.map((post: any) => (

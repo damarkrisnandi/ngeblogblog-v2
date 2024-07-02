@@ -1,4 +1,5 @@
 import getPosts from "@/helpers/getPosts";
+import { PaginationData } from "@/constants/pagination"
 import {
   Pagination,
   PaginationContent,
@@ -10,7 +11,7 @@ import {
 } from "../ui/pagination";
 
 const dataPosts = getPosts();
-const pageSize = Math.ceil(dataPosts.length / 5)
+const pageSize = Math.ceil(dataPosts.length / PaginationData.pageSize)
 
 export default function AppPagination(props: any) {
   return (
