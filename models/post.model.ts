@@ -4,8 +4,8 @@ export class PostModel {
 }
 
 export class PostHeaderModel {
-    title: string;
-    description: string;
-    date: Date | string;
-    tags: string[];
+    title: string = '';
+    description: string = '';
+    date: Date | string = new Date();
+    tags: string[] = [];
 }
