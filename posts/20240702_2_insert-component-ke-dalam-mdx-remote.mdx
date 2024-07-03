@@ -4,10 +4,24 @@ description: 'eksperimen untuk memasukkan component ke dalam MDX Remote'
 date: 'Tue Jul 02 2024 17:06:46 GMT+0700 (Indochina Time)'
 tags: [mdx, component]
 ---
-{/* customize your filename, title, desc, and all of this file properties */}
-{/* fill your content here */}
+## Register Component
+register component pada ``@/components/main/AppMDXViewer``
+```
+const components = { 
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  AppCounter 
+}
+```
+ 
 ## ShadCNUI Button
 ### Code 
+call component di **.mdx** file
 ```
 <Button>Click it!</Button>
 ```
@@ -16,6 +30,7 @@ tags: [mdx, component]
 
 ## ShadCNUI Card 
 ### Code
+call component di **.mdx** file
 ```
 <Card className="w-3/12">
     <CardHeader>
@@ -50,3 +65,47 @@ tags: [mdx, component]
         <Button className="w-full"> Button at Footer </Button>
     </CardFooter>
 </Card>
+
+## Interactive Component
+### Code
+create component di ``@/components/main/AppCounter``
+``` 
+
+'use client'
+import { Card, CardContent, CardFooter, } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+
+const AppCounter = () => {
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrement = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <Card>
+      <CardContent>
+        <p>Count: {count}</p>
+      </CardContent>
+      <CardFooter className='flex space-x-1'>
+        <Button onClick={handleDecrement}>Decrement</Button>
+        <Button onClick={handleIncrement}>Increment</Button>
+      </CardFooter>
+    </Card>
+  );
+};
+
+export default AppCounter;
+```
+call component di **.mdx** file
+```
+<AppCounter />
+```
+
+### Result
+<AppCounter />
