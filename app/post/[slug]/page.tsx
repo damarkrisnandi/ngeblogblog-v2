@@ -1,6 +1,5 @@
 'use server'
 // import Head from "next/head";
-import { MDXRemote } from "next-mdx-remote";
 import getPost from "../../../helpers/getPost";
 import getPosts from "../../../helpers/getPosts";
 import { getMdxSource } from "../../../services/getMdxSource.func"
@@ -11,10 +10,6 @@ import dynamic from "next/dynamic";
 import { AppPostHeader } from "@/components/main/AppPostHeader";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { AppNewMark } from "@/components/main/AppNewMark";
-import { Button } from "@/components/ui/button";
-import { Link, Eye } from "lucide-react";
 import AppCommentSection from "@/components/main/AppCommentSection";
 
 const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
