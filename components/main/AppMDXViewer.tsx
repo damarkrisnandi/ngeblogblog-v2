@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import AppCounter from "./AppCounter";
+import AppPreviousVersionBtn from "./AppPreviousVersionBtn";
 
 /**
  * first, register all components needed here
@@ -15,7 +16,8 @@ const components = {
   CardFooter,
   CardHeader,
   CardTitle,
-  AppCounter 
+  AppCounter,
+  AppPreviousVersionBtn 
 }
 
 
