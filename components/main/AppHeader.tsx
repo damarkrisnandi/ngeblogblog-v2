@@ -31,7 +31,7 @@ export function AppHeader() {
                     height={72}
                     />
                     <p className="text-2xl font-semibold">
-                    ngeblog, blog
+                    ngeblogblog.tsx
                     </p>
 
             </NavigationMenuLink>
