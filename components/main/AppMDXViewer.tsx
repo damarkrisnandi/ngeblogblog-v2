@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import AppCounter from "./AppCounter";
 import AppPreviousVersionBtn from "./AppPreviousVersionBtn";
 
+
 /**
  * first, register all components needed here
  */
@@ -21,7 +22,7 @@ const components = {
 }
 
 
-function AppMDXViewer(props: any) {
+async function AppMDXViewer(props: any) {
   return (
     <div className="w-full wrap">
         <MDXRemote {...props} components={components} />

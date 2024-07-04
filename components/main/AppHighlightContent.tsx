@@ -42,7 +42,7 @@ export function AppHighlightContent({ className, ...props }: CardProps & any) {
       <CardContent>
         {
         props.tags.map((tag: string) => (
-        <Badge key={tag} variant={'default'} className="mr-1"> {tag} </Badge>
+        <Badge key={tag} variant={'secondary'} className="mr-1"> {tag} </Badge>
         ))}
         <AppNewMark date={props.date}/>
       </CardContent>
