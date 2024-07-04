@@ -9,6 +9,13 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 import dynamic from "next/dynamic";
 import { AppPostHeader } from "@/components/main/AppPostHeader";
+import { cookies } from "next/headers";
+import { createClient } from "@/utils/supabase/server";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { AppNewMark } from "@/components/main/AppNewMark";
+import { Button } from "@/components/ui/button";
+import { Link, Eye } from "lucide-react";
+import AppCommentSection from "@/components/main/AppCommentSection";
 
 const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
   loading: () => <Loading />,
@@ -17,16 +24,18 @@ const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
 
 async function Post(props: any) {
   const { data, content } = await getMdxData(props);
+  const comments = await getAllComments(props) || [];
   const { title, description, date, tags } = data;
   const titleView = `ngeblog - ${title}`;
   return (
-    <main className="flex min-h-screen flex-col items-start p-5 md:p-24">
+    <main className="flex space-y-2 min-h-screen flex-col items-start p-5 md:p-24">
       <AppPostHeader {...data} />
       <div className="flex flex-col md:flex-row mb-6">
         <div className="prose !max-w-[32ch] sm:!max-w-[60ch] md:!max-w-full mt-12">
           <AppMDXViewer {...content}/>
         </div>
       </div>
+      <AppCommentSection comments={comments}/>
     </main>
   );
 }
@@ -62,5 +71,15 @@ function Loading() {
       </div>
     </div>
   )
+}
+
+async function getAllComments({ params }: any) {
+  const supabase = createClient(cookies());
+  let { data } = await supabase.from("comments_post")
+  .select("*")
+  .eq('post', params.slug)
+  .order('created_at',  { ascending: false } )
+
+  return data;
 }
 

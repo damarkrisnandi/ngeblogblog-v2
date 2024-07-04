@@ -15,21 +15,6 @@ import { Badge } from "../ui/badge"
 import { AppNewMark } from "./AppNewMark"
 // import { Switch } from "@/components/ui/switch"
  
-const notifications = [
-  {
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
-  },
-  {
-    title: "You have a new message!",
-    description: "1 hour ago",
-  },
-  {
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
-  },
-]
- 
 type CardProps = React.ComponentProps<typeof Card>
  
 export function AppHighlightContent({ className, ...props }: CardProps & any) {
