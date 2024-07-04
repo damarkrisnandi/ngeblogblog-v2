@@ -69,12 +69,12 @@ function Loading() {
 }
 
 async function getAllComments({ params }: any) {
-  const supabase = createClient(cookies());
-  let { data } = await supabase.from("comments_post")
-  .select("*")
-  .eq('post', params.slug)
-  .order('created_at',  { ascending: false } )
+  // const supabase = createClient(cookies());
+  // let { data } = await supabase.from("comments_post")
+  // .select("*")
+  // .eq('post', params.slug)
+  // .order('created_at',  { ascending: false } )
 
-  return data;
+  // return data;
 }
 
