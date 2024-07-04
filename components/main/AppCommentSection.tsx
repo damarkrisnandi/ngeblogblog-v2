@@ -11,7 +11,7 @@ function AppCommentSection({ comments }: any) {
             </Card>
             {
                 comments?.map((comment: any) => (
-                    <div className="w-full">
+                    <div className="w-full" key={comment.id}>
                         <Card className="w-full">
                             <CardHeader>
                                 <CardTitle>{comment.name}</CardTitle>
