@@ -8,9 +8,8 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 import dynamic from "next/dynamic";
 import { AppPostHeader } from "@/components/main/AppPostHeader";
-// import { cookies } from "next/headers";
-// import { createClient } from "@/utils/supabase/server";
-// import AppCommentSection from "@/components/main/AppCommentSection";
+import { createClient } from "@/utils/supabase/server";
+import AppCommentSection from "@/components/main/AppCommentSection";
 
 const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
   loading: () => <Loading />,
@@ -19,7 +18,7 @@ const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
 
 async function Post(props: any) {
   const { data, content } = await getMdxData(props);
-  // const comments = await getAllComments(props) || [];
+  const comments = await getAllComments(props) || [];
   const { title, description, date, tags } = data;
   const titleView = `ngeblog - ${title}`;
   return (
@@ -30,7 +29,7 @@ async function Post(props: any) {
           <AppMDXViewer {...content}/>
         </div>
       </div>
-      {/* <AppCommentSection comments={comments}/> */}
+      <AppCommentSection comments={comments}/>
     </main>
   );
 }
@@ -69,12 +68,12 @@ function Loading() {
 }
 
 async function getAllComments({ params }: any) {
-  // const supabase = createClient(cookies());
-  // let { data } = await supabase.from("comments_post")
-  // .select("*")
-  // .eq('post', params.slug)
-  // .order('created_at',  { ascending: false } )
+  const supabase = createClient();
+  let { data } = await supabase.from("comments_post")
+  .select("*")
+  .eq('post', params.slug)
+  .order('created_at',  { ascending: false } )
 
-  // return data;
+  return data;
 }
 
