@@ -17,7 +17,12 @@ const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
 
 async function Post(props: any) {
   const { data, content } = await getMdxData(props);
-  const comments = await getAllComments(props) || [];
+  let comments = [];
+  try {
+    comments = await getAllComments(props) || [];
+  } catch (error) {
+    console.log(error);
+  }
   const { title, description, date, tags } = data;
   const titleView = `ngeblog - ${title}`;
   return (
