@@ -1,4 +1,3 @@
-'use server'
 // import Head from "next/head";
 import getPost from "../../../helpers/getPost";
 import getPosts from "../../../helpers/getPosts";
