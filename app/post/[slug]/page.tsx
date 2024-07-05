@@ -17,7 +17,7 @@ const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
 
 async function Post(props: any) {
   const { data, content } = await getMdxData(props);
-  let comments = [];
+  // let comments = [];
   // setTimeout(async () => {
   //   try {
   //     comments = await getAllComments(props) || [];
