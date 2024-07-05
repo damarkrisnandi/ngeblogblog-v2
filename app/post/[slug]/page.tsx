@@ -35,7 +35,7 @@ async function Post(props: any) {
           <AppMDXViewer {...content}/>
         </div>
       </div>
-      <AppCommentSection comments={comments}/>
+      {/* <AppCommentSection comments={comments}/> */}
     </main>
   );
 }
