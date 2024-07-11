@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppHeader } from "@/components/main/AppHeader";
 import Footer from "@/components/main/AppFooter";
+import "highlight.js/styles/atom-one-dark-reasonable.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
