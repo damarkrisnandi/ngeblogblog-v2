@@ -78,3 +78,6 @@
 .katex-html {
   display: none;
 }
+.hljs {
+  background: none !important;
+}
