@@ -25,7 +25,7 @@ const components = {
 }
 
 
-async function AppMDXViewer(props: any) {
+function AppMDXViewer(props: any) {
   useEffect(() => {
     hljs.highlightAll();
   }, []);
