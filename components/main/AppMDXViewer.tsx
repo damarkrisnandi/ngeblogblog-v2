@@ -26,9 +26,9 @@ const components = {
 
 
 async function AppMDXViewer(props: any) {
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
+  // useEffect(() => {
+  //   hljs.highlightAll();
+  // }, []);
   return (
     <div className="w-full wrap">
         <MDXRemote {...props} components={components} />
