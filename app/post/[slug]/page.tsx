@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import { AppPostHeader } from "@/components/main/AppPostHeader";
 import { createClient } from "@/utils/supabase/server";
 import AppCommentSection from "@/components/main/AppCommentSection";
+import Head from "next/head";
 
 const AppMDXViewer = dynamic(() => import('@/components/main/AppMDXViewer'), {
   loading: () => <Loading />,
@@ -30,6 +31,10 @@ async function Post(props: any) {
   const titleView = `ngeblog - ${title}`;
   return (
     <main className="flex space-y-2 min-h-screen flex-col items-start p-5 md:p-24">
+      <Head>
+        <meta charSet="utf-8" />
+      </Head>
+
       <AppPostHeader {...data} />
       <div className="flex flex-col md:flex-row mb-6">
         <div className="prose !max-w-[32ch] sm:!max-w-[60ch] md:!max-w-full mt-12">
