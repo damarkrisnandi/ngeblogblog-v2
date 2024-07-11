@@ -1,4 +1,5 @@
 // import Head from "next/head";
+import "highlight.js/styles/atom-one-dark-reasonable.css";
 import getPost from "../../../helpers/getPost";
 import getPosts from "../../../helpers/getPosts";
 import { getMdxSource } from "../../../services/getMdxSource.func"
