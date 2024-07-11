@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    transpilePackages: ['highlight.js'],
     reactStrictMode: false,
     swcMinify: true,
     redirects: () => {
